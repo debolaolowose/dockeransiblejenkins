@@ -40,8 +40,8 @@
       enabled: yes
   - name: Start the container
     docker_container:
-      name: hariapp
-      image: "theolowose/maven:1.0.0"
+      name: maven
+      image: "theolowose/maven"
       state: started
       published_ports:
         - 0.0.0.0:8080:8080     
