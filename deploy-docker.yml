@@ -35,15 +35,15 @@
       name: docker
       state: started
       enabled: yes
-  handlers:
-  - name: restart docker
-    service: 
-      name: docker 
-      state: restarted
   - name: Start the container
     docker_container:
       name: hariapp
       image: "theolowose/maven:1.0.0"
       state: started
       published_ports:
-        - 0.0.0.0:8080:8080    
+        - 0.0.0.0:8080:8080     
+  handlers:
+  - name: restart docker
+    service: 
+      name: docker 
+      state: restarted
