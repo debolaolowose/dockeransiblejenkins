@@ -30,9 +30,27 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
+  - name: Install Docker Module for Python
+    pip:
+      name: docker
   - name: start docker
     service:
       name: docker
+      state: started
+      enabled: yes
+  - name: Start the container
+    docker_container:
+      name: hariapp
+      image: "theolowose/maven:1.0.0"
+      state: started
+      published_ports:
+        - 0.0.0.0:8080:8080     
+  handlers:
+  - name: restart docker
+    service: 
+      name: docker 
+      state: restarted
+
       state: started
       enabled: yes
   - name: Start the container
